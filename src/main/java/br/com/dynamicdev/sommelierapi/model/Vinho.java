@@ -1,4 +1,4 @@
-package br.com.dynamicdev.model;
+package br.com.dynamicdev.sommelierapi.model;
 
 import java.io.Serializable;
 

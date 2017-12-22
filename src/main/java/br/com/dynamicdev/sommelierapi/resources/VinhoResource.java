@@ -1,4 +1,4 @@
-package br.com.dynamicdev.resources;
+package br.com.dynamicdev.sommelierapi.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.dynamicdev.model.Vinho;
-import br.com.dynamicdev.repository.VinhoRepository;
+import br.com.dynamicdev.sommelierapi.model.Vinho;
+import br.com.dynamicdev.sommelierapi.respository.VinhoRepository;
 
 @RestController
 @RequestMapping("/vinhos")
