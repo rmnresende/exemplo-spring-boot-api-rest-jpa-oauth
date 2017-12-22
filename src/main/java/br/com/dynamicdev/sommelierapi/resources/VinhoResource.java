@@ -14,32 +14,33 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.dynamicdev.sommelierapi.model.Vinho;
-import br.com.dynamicdev.sommelierapi.respository.VinhoRepository;
+import br.com.dynamicdev.sommelierapi.service.VinhoService;
 
 @RestController
 @RequestMapping("/vinhos")
 public class VinhoResource {
 
 	@Autowired
-	private VinhoRepository vinhoRepository;
+	private VinhoService vinhoService;
 
 	@GetMapping
-	private List<Vinho> listar() {
-		return vinhoRepository.findAll();
+	public ResponseEntity<List<Vinho>> listar() {
+		return ResponseEntity.ok().body(vinhoService.listar());
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Vinho> buscarPeloId(@PathVariable Long id) {
 
-		Vinho vinho = vinhoRepository.findOne(id);
+		//se nao encontrar um vinho com o ID passado como parametro, retorna um 404 NOT FOUND
+		Vinho vinho = vinhoService.buscarPeloId(id);
 
 		return ResponseEntity.ok().body(vinho);
 	}
 
 	@PostMapping
-	private ResponseEntity<Void> salvar(@RequestBody Vinho vinho) {
+	public ResponseEntity<Void> salvar(@RequestBody Vinho vinho) {
 
-		vinho = vinhoRepository.save(vinho);
+		vinho = vinhoService.salvar(vinho);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(vinho.getId()).toUri();
 
