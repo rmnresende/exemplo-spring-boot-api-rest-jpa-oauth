@@ -2,6 +2,7 @@ package br.com.dynamicdev.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -61,6 +62,7 @@ public class Vinho implements Serializable{
 	}
 
 	@Enumerated(EnumType.STRING)
+	@Column(name = "tipo_vinho")
 	public TipoVinho getTipoVinho() {
 		return tipoVinho;
 	}
@@ -70,6 +72,7 @@ public class Vinho implements Serializable{
 	}
 
 	@Enumerated(EnumType.STRING)
+	@Column(name = "classificacao_vinho")
 	public ClassificacaoVinho getClassificacaoVinho() {
 		return classificacaoVinho;
 	}
@@ -86,6 +89,7 @@ public class Vinho implements Serializable{
 		this.volume = volume;
 	}
 
+	@Column(name = "teor_alcoolico")
 	public double getTeorAlcoolico() {
 		return teorAlcoolico;
 	}

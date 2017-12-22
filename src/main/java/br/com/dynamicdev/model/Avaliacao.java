@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -53,7 +54,7 @@ public class Avaliacao implements Serializable{
 		this.dataPublicacao = dataPublicacao;
 	}
 
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	public Usuario getIdUsuario() {
 		return idUsuario;

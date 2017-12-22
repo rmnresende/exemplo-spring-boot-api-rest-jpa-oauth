@@ -1,0 +1,28 @@
+CREATE TABLE vinho(
+	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	tipo_vinho VARCHAR(20) NOT NULL,
+	classificacao_vinho VARCHAR(20) NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	descricao TEXT,
+	volume INT NOT NULL,
+	teor_alcoolico FLOAT NOT NULL, 
+	safra INT,
+	origem VARCHAR(50)
+)ENGINE=innoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE usuario(
+	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	login VARCHAR(20) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	data_cadastro DATE NOT NULL
+)ENGINE=innoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE avaliacao(
+	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	texto TEXT NOT NULL,
+	data_publicacao DATE NOT NULL,
+	id_usuario BIGINT NOT NULL,
+	FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+)ENGINE=innoDB DEFAULT CHARSET=utf8;
+
