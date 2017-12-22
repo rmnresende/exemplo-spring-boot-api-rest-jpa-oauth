@@ -43,5 +43,24 @@ public class VinhoService {
 		vinho.setId(null);
 		return vinhoRepository.save(vinho);
 	}
+	
+	/**
+	 * Metodo para verificar a existencia de um vinho.
+	 * Chama o metodo buscarPeloId que se nao encontrar
+	 * o vinho lanca uma excecao que lanca um NOT FOUND 
+	 * @param vinho
+	 */
+	public void verificarExistencia(Vinho vinho) {
+		buscarPeloId(vinho.getId());
+	}
+	
+	public void atualizar(Vinho vinho) {
+		
+		/* vericando se o vinho realmente existe, poderia ter
+		 * chamado o metodo buscarPeloId direto, mas criei o metodo
+		 *  verificar existencia para ajudar na legibilidade do codigo */
+		verificarExistencia(vinho);
+		vinhoRepository.save(vinho);
+	}
 
 }
