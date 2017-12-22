@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,24 +19,31 @@ import br.com.dynamicdev.repository.VinhoRepository;
 @RestController
 @RequestMapping("/vinhos")
 public class VinhoResource {
-	
+
 	@Autowired
 	private VinhoRepository vinhoRepository;
-	
+
 	@GetMapping
-	private List<Vinho> listar(){
+	private List<Vinho> listar() {
 		return vinhoRepository.findAll();
 	}
-	
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Vinho> buscarPeloId(@PathVariable Long id) {
+
+		Vinho vinho = vinhoRepository.findOne(id);
+
+		return ResponseEntity.ok().body(vinho);
+	}
+
 	@PostMapping
 	private ResponseEntity<Void> salvar(@RequestBody Vinho vinho) {
-		
-		vinho = vinhoRepository.save(vinho);		
-		
-		URI uri = ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/{id}").buildAndExpand(vinho.getId()).toUri();
-		
-		return ResponseEntity.created(uri).build();		
+
+		vinho = vinhoRepository.save(vinho);
+
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(vinho.getId()).toUri();
+
+		return ResponseEntity.created(uri).build();
 	}
 
 }
