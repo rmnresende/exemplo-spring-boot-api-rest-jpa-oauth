@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
 @Table(name = "vinho")
 public class Vinho implements Serializable{
@@ -21,6 +24,7 @@ public class Vinho implements Serializable{
 	
 	private String nome;
 	
+	@JsonInclude(Include.NON_NULL)
 	private String descricao;
 	
 	private TipoVinho tipoVinho;
@@ -31,8 +35,10 @@ public class Vinho implements Serializable{
 	
 	private double teorAlcoolico;
 	
-	private int safra;//ano da safra do vinho
+	@JsonInclude(Include.NON_NULL)
+	private Integer safra;//ano da safra do vinho, usando Integer em vez de int pois este campo pode ter valores nulos
 	
+	@JsonInclude(Include.NON_NULL)
 	private String origem; //nome do pais de origem do vinho
 
 	@Id
@@ -98,11 +104,11 @@ public class Vinho implements Serializable{
 		this.teorAlcoolico = teorAlcoolico;
 	}
 
-	public int getSafra() {
+	public Integer getSafra() {
 		return safra;
 	}
 
-	public void setSafra(int safra) {
+	public void setSafra(Integer safra) {
 		this.safra = safra;
 	}
 
