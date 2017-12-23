@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +33,8 @@ public class VinhoResource {
 	@GetMapping("/{id}")
 	public ResponseEntity<Vinho> buscarPeloId(@PathVariable Long id) {
 
-		//se nao encontrar um vinho com o ID passado como parametro, retorna um 404 NOT FOUND
+		// se nao encontrar um vinho com o ID passado como parametro, retorna um 404 NOT
+		// FOUND
 		Vinho vinho = vinhoService.buscarPeloId(id);
 
 		return ResponseEntity.ok().body(vinho);
@@ -47,13 +49,19 @@ public class VinhoResource {
 
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> atualiazar(@PathVariable Long id, @RequestBody Vinho vinho){
-		
-		//garantindo que vai atualizar o vinho correto
+	public ResponseEntity<Void> atualiazar(@PathVariable Long id, @RequestBody Vinho vinho) {
+
+		// garantindo que vai atualizar o vinho correto
 		vinho.setId(id);
 		vinhoService.atualizar(vinho);
+		return ResponseEntity.noContent().build();
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deletar(@PathVariable Long id) {
+		vinhoService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
 
