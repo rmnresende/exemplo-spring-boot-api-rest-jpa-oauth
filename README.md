@@ -1,7 +1,12 @@
-# sommelier-api
+# sommelier-api - Exemplo de API Rest com Spring Boot
+
 API (Rest)  social para vinhos.
 
-O objetivo deste projeto é construir uma API Rest para uma (espécie) de rede social para vinhos, onde os usuários iriam avaliar os vinhos, adicionar novos vinhos, dar dicas sobre bons lugares para comprar vinhos, e coisas dos tipos, seria uma ferramenta para os amantes de vinhos trocarem experiências e ideias.
+O objetivo deste projeto é construir um exemplo de API Rest usando Spring Boot, que poderá servir de guia para quem estiver estudando o assunto.
+
+A ideia é contruir uma  API Rest para uma rede social de vinhos.
+
+onde os usuários iriam avaliar os vinhos, adicionar novos vinhos, dar dicas sobre bons lugares para comprar vinhos, e coisas dos tipos, seria uma ferramenta para os amantes de vinhos trocarem experiências e ideias.
 
 Será usado Java 8, Maven, Spring Boot e MySQL.
 
