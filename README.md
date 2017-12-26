@@ -1,4 +1,4 @@
-# sommelier-api - Exemplo de API Rest com Spring Boot
+# sommelier-api - Exemplo de API Rest com Spring Boot, Spring Security e JPA
 
 API (Rest)  social para vinhos.
 
