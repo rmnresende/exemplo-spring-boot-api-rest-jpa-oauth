@@ -33,8 +33,7 @@ public class VinhoResource {
 	@GetMapping("/{id}")
 	public ResponseEntity<Vinho> buscarPeloId(@PathVariable Long id) {
 
-		// se nao encontrar um vinho com o ID passado como parametro, retorna um 404 NOT
-		// FOUND
+		// se nao encontrar um vinho com o ID passado como parametro, retorna um 404 NOT FOUND
 		Vinho vinho = vinhoService.buscarPeloId(id);
 
 		return ResponseEntity.ok().body(vinho);

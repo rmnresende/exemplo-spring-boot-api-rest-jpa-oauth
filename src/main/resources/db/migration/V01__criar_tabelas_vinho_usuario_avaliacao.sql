@@ -5,7 +5,7 @@ CREATE TABLE vinho(
 	nome VARCHAR(100) NOT NULL,
 	descricao TEXT,
 	volume INT NOT NULL,
-	teor_alcoolico FLOAT NOT NULL, 
+	teor_alcoolico FLOAT NOT NULL,
 	safra INT,
 	origem VARCHAR(50)
 )ENGINE=innoDB DEFAULT CHARSET=utf8;
